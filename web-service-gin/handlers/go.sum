@@ -1,5 +1,7 @@
-github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728160054-45a4b93f1c92 h1:E8ymk6GeORay5v8PwAP2+S4Gu+rjVZ9j5wz8U0GIiHE=
-github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728160054-45a4b93f1c92/go.mod h1:Yv2BUueFlMmGXdA7md3k6ivwfogFZ10njhzk7Clrt9M=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728164748-a0f86ed86fa1 h1:qSBIScrCHl/GGdhDoW1HlyV1RjOnMpXPdSZcv4lOf+4=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728164748-a0f86ed86fa1/go.mod h1:Yv2BUueFlMmGXdA7md3k6ivwfogFZ10njhzk7Clrt9M=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728172512-18130dcc5764 h1:3+RPYkcVwBoI6g0CQHbesIpA/Z+u8ToGjG9O/W4dUjY=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728172512-18130dcc5764/go.mod h1:Yv2BUueFlMmGXdA7md3k6ivwfogFZ10njhzk7Clrt9M=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
