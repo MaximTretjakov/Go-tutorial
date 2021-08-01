@@ -3,8 +3,8 @@ module github.com/MaximTretjakov/Go-tutorial
 go 1.16
 
 require (
-	github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728172512-18130dcc5764 // indirect
-	github.com/MaximTretjakov/Go-tutorial/web-service-gin/handlers v0.0.0-20210728172512-18130dcc5764
+	github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210801081453-469a26e0c190 // indirect
+	github.com/MaximTretjakov/Go-tutorial/web-service-gin/handlers v0.0.0-20210801081453-469a26e0c190
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/validator/v10 v10.8.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

@@ -1,8 +1,8 @@
-github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728160054-45a4b93f1c92/go.mod h1:Yv2BUueFlMmGXdA7md3k6ivwfogFZ10njhzk7Clrt9M=
-github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728172512-18130dcc5764 h1:3+RPYkcVwBoI6g0CQHbesIpA/Z+u8ToGjG9O/W4dUjY=
 github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210728172512-18130dcc5764/go.mod h1:Yv2BUueFlMmGXdA7md3k6ivwfogFZ10njhzk7Clrt9M=
-github.com/MaximTretjakov/Go-tutorial/web-service-gin/handlers v0.0.0-20210728172512-18130dcc5764 h1:hIwc5YYkCAGGi11KlS44ppmPtmkoyQx0f8sQocg2qLk=
-github.com/MaximTretjakov/Go-tutorial/web-service-gin/handlers v0.0.0-20210728172512-18130dcc5764/go.mod h1:cDeMgKLDJHS77Fyzqfg2a5ggBaiAT7pxEU5uuI3RP8s=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210801081453-469a26e0c190 h1:2dRZiXrdPemZRsye8UALgEbSdtzOPTgZs7XQieOyJR0=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/data v0.0.0-20210801081453-469a26e0c190/go.mod h1:Yv2BUueFlMmGXdA7md3k6ivwfogFZ10njhzk7Clrt9M=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/handlers v0.0.0-20210801081453-469a26e0c190 h1:Yt3A2S+bndPJhjk6EsxFzlpIH4bdA8+jBAbKMJkv3E4=
+github.com/MaximTretjakov/Go-tutorial/web-service-gin/handlers v0.0.0-20210801081453-469a26e0c190/go.mod h1:OYFte7zyXn8wS6HeUViOf5emhEBEEBCYhhcNfTqB7i8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
