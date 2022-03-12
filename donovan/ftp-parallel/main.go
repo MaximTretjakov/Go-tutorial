@@ -5,15 +5,22 @@ import (
 	"io/ioutil"
 	"log"
 	"net"
+	"os"
+	"strings"
 )
 
-// func changeDir(path string) {
-// 	if len(path) > 0 {
-// 		if err := os.Chdir(path); err != nil {
-// 			log.Println(err)
-// 		}
-// 	}
-// }
+func changeDir(path string) {
+	if len(path) > 0 {
+		if err := os.Chdir(path); err != nil {
+			log.Println(err)
+		}
+		cwd, err := os.Getwd()
+		if err != nil {
+			log.Println(err)
+		}
+		log.Println("CWD: ", cwd)
+	}
+}
 
 func listing() {
 	files, err := ioutil.ReadDir(".")
@@ -28,6 +35,7 @@ func listing() {
 
 func handler(c net.Conn) {
 	buf := make([]byte, 20)
+	var commandAndData []string
 	defer c.Close()
 
 	for {
@@ -37,17 +45,24 @@ func handler(c net.Conn) {
 			break
 		}
 
-		switch string(buf[0:bytes_data]) {
-		case "ls":
-			log.Printf("Remote: %s Bytes: %d Command: %s\n", c.RemoteAddr().String(), bytes_data, "ls")
-			listing()
-		case "cd":
-			log.Printf("Remote: %s Bytes: %d Command: %s\n", c.RemoteAddr().String(), bytes_data, "cd")
-			// changeDir()
-		case "get":
-			log.Printf("Remote: %s Bytes: %d Command: %s\n", c.RemoteAddr().String(), bytes_data, "get")
-		case "close":
-			log.Printf("Remote: %s Bytes: %d Command: %s\n", c.RemoteAddr().String(), bytes_data, "close")
+		data := string(buf[0:bytes_data])
+		if len(data) > 0 && strings.ContainsAny(data, "_") {
+			commandAndData = strings.Split(string(buf[0:bytes_data]), "_")
+			if commandAndData[0] == "cd" {
+				log.Printf("Remote: %s Bytes: %d Command: %s Param: %s\n", c.RemoteAddr().String(), bytes_data, commandAndData[0], commandAndData[1])
+				changeDir(commandAndData[1])
+			}
+			if commandAndData[0] == "get" {
+				log.Printf("Remote: %s Bytes: %d Command: %s Param: %s\n", c.RemoteAddr().String(), bytes_data, commandAndData[0], commandAndData[1])
+			}
+		} else {
+			if data == "ls" {
+				log.Printf("Remote: %s Bytes: %d Command: %s\n", c.RemoteAddr().String(), bytes_data, "ls")
+				listing()
+			}
+			if data == "close" {
+				log.Printf("Remote: %s Bytes: %d Command: %s\n", c.RemoteAddr().String(), bytes_data, "close")
+			}
 		}
 	}
 }
