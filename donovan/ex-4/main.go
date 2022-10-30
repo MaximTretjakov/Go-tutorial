@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"strings"
@@ -9,6 +10,9 @@ import (
 
 type WordCounter int
 type StringCounter int
+type CountinWriter struct{}
+
+func (cw *CountinWriter) Write(p []byte) (int, error) { return len(p), nil }
 
 func (wc WordCounter) Write(p []byte) (int, error) {
 	input := string(p)
@@ -34,13 +38,12 @@ func (ws *StringCounter) Write(p []byte) int {
 
 // todo
 func CountingWriter(w io.Writer) (io.Writer, *int64) {
-	var new io.Writer
-	b, err := fmt.Fprintln(w, new)
+	var buf bytes.Buffer
+	_, err := fmt.Fprintln(&buf)
 	if err != nil {
 		fmt.Println(err)
 	}
-	nunBytes := int64(b)
-	return new, &nunBytes
+	return &buf, nil
 }
 
 func main() {
@@ -60,6 +63,9 @@ func main() {
 	fmt.Printf("Words\t%d\n", r)
 
 	// CountingWriter
-	w, counterBytes := CountingWriter(b)
-	fmt.Printf("New Writer\t%v\tBytes counter\t%d\n", w, *counterBytes)
+	var cw CountinWriter
+	cw.Write([]byte(s))
+	// w, counterBytes := CountingWriter(&cw)
+	// fmt.Printf("New Writer\t%v\tBytes counter\t%d\n", w, *counterBytes)
+	fmt.Println(CountingWriter(&cw))
 }
