@@ -7,31 +7,38 @@ import (
 	"time"
 )
 
-type Server struct{
-	IP string
+type Server struct {
+	IP   string
 	Port string
 }
 
-func(s *Server) handleConn(c net.Conn){
+func NewServer() *Server {
+	return &Server{
+		IP:   "localhost",
+		Port: "8000",
+	}
+}
+
+func (s *Server) handleConn(c net.Conn) {
 	defer c.Close()
-	for{
-		_, err:=io.WriteString(c, time.Now().Format("15:04:05\n"))
-		if err != nil{
+	for {
+		_, err := io.WriteString(c, time.Now().Format("15:04:05\n"))
+		if err != nil {
 			return
 		}
 		time.Sleep(1 * time.Second)
 	}
 }
 
-func (s *Server) Server() {
-	listener, err := net.Listen("localhost", "8000")
+func (s *Server) server() {
+	listener, err := net.Listen(s.IP, s.Port)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for{
-		conn, err:=listener.Accept()
-		if err!= nil{
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
 			log.Print(err)
 			continue
 		}
