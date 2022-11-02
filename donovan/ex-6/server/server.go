@@ -9,14 +9,14 @@ import (
 )
 
 type Server struct {
-	IP   string
-	Port string
+	ConnectionString string
+	Protocol         string
 }
 
 func NewServer() *Server {
 	return &Server{
-		IP:   "localhost",
-		Port: "8000",
+		ConnectionString: "localhost:8000",
+		Protocol:         "tcp",
 	}
 }
 
@@ -32,12 +32,12 @@ func (s *Server) handleConn(c net.Conn) {
 }
 
 func (s *Server) ServerRun() {
-	listener, err := net.Listen(s.IP, s.Port)
+	listener, err := net.Listen(s.Protocol, s.ConnectionString)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Server start. Port: %s IP: %s", s.Port, s.IP)
+	fmt.Printf("Server start at %s\n", s.ConnectionString)
 
 	for {
 		conn, err := listener.Accept()
