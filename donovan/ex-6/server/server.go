@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net"
@@ -30,11 +31,13 @@ func (s *Server) handleConn(c net.Conn) {
 	}
 }
 
-func (s *Server) server() {
+func (s *Server) ServerRun() {
 	listener, err := net.Listen(s.IP, s.Port)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	fmt.Printf("Server start. Port: %s IP: %s", s.Port, s.IP)
 
 	for {
 		conn, err := listener.Accept()
