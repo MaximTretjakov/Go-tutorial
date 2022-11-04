@@ -45,6 +45,7 @@ func (s *Server) ServerRun() {
 			log.Print(err)
 			continue
 		}
+		fmt.Printf("Client connected... ip: %s\n", conn.RemoteAddr().String())
 		go s.handleConn(conn)
 	}
 }
