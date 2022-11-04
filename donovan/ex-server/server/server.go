@@ -13,9 +13,9 @@ type Server struct {
 	Protocol         string
 }
 
-func NewServer() *Server {
+func NewServer(cs *string) *Server {
 	return &Server{
-		ConnectionString: "localhost:8000",
+		ConnectionString: *cs,
 		Protocol:         "tcp",
 	}
 }
