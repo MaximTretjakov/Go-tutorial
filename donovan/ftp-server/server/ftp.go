@@ -1,12 +1,14 @@
 package server
 
 import (
+	"bufio"
 	"fmt"
 	"io/fs"
 	"io/ioutil"
 	"log"
 	"net"
 	"os"
+	"strings"
 )
 
 type FTPCustom struct {
@@ -16,7 +18,8 @@ type FTPCustom struct {
 
 func New(ftp *FTPCustom) *FTPCustom {
 	return &FTPCustom{
-		Address: "localhost:22",
+		Address:    "localhost:9001",
+		CurrentDir: "/home/maxim/Projects/Go-tutorial/donovan/ftp-server",
 	}
 }
 
@@ -44,6 +47,9 @@ func (ftp *FTPCustom) Ls() ([]fs.FileInfo, error) {
 	if err != nil {
 		return nil, err
 	}
+	for _, val := range info {
+		fmt.Println(val.Name())
+	}
 	return info, nil
 }
 
@@ -55,27 +61,34 @@ func (ftp *FTPCustom) Close(conn interface{}) {
 }
 
 func (ftp *FTPCustom) Run() {
-	cmd := make([]byte, 100)
 	listner, err := net.Listen("tcp", ftp.Address)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("FTP server start at: %s", ftp.Address)
+
+	fmt.Printf("FTP server start at: %s\n", ftp.Address)
+
 	for {
 		conn, err := listner.Accept()
 		if err != nil {
 			fmt.Println(err)
 			continue
 		}
-		data, err := conn.Read(cmd)
+
+		data, err := bufio.NewReader(conn).ReadString('\n')
 		if err != nil {
 			fmt.Println(err)
+			return
 		}
-		fmt.Printf("Incoming connection: %s\tReceived data: %d\n", conn.RemoteAddr().String(), data)
-		fmt.Printf("received command: %s\n", fmt.Sprint(data))
-		switch fmt.Sprint(data) {
+
+		fmt.Printf("Incoming connection: %s\n		Received data: %s\n", conn.RemoteAddr().String(), data)
+
+		switch strings.TrimSpace(string(data)) {
 		case "ls":
-			ftp.Ls()
+			res, _ := ftp.Ls()
+			for _, v := range res {
+				conn.Write([]byte(v.Name()))
+			}
 		case "cd":
 			ftp.Cd("path")
 		case "get":
