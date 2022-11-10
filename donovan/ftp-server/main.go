@@ -1,8 +1,20 @@
 package main
 
-import "github.com/MaximTretjakov/Go-tutorial/donovan/ftp-server/server"
+import (
+	"fmt"
+	"os"
+
+	"github.com/MaximTretjakov/Go-tutorial/donovan/ftp-server/server"
+)
 
 func main() {
-	ftp := server.New(&server.FTPCustom{})
+	arguments := os.Args
+	if len(arguments) == 1 {
+		fmt.Println("Please provide port number")
+		return
+	}
+
+	PORT := ":" + arguments[1]
+	ftp := server.New(PORT)
 	ftp.Run()
 }
