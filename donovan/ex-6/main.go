@@ -4,28 +4,36 @@ import (
 	"fmt"
 	"math/rand"
 	"sync"
-	"time"
 )
 
 func main() {
-	chRND := make(chan int64, 10)
-	chRNDQuad := make(chan int64, 10)
+	chRND := make(chan int, 10)
+	chRNDQuad := make(chan int, 10)
 	var wg1 sync.WaitGroup
+	var wg2 sync.WaitGroup
 
 	for i := 0; i < 10; i++ {
-		rand.Seed(time.Now().UnixNano())
-		rndNum := rand.Int63()
-		fmt.Println("Generate random numbers")
-		chRND <- rndNum
+		wg2.Add(1)
+		go func() {
+			defer wg2.Done()
+			rndNum := rand.Intn(10-1) + 1
+			fmt.Printf("Generate random numbers %d\n", rndNum)
+			chRND <- rndNum
+		}()
 	}
-	close(chRND)
+
+	go func() {
+		wg2.Wait()
+		close(chRND)
+	}()
 
 	for d := range chRND {
 		wg1.Add(1)
-		go func(d int64) {
+		go func(d int) {
 			defer wg1.Done()
-			fmt.Println("Build quads")
-			chRNDQuad <- d * 2
+			result := d * 2
+			fmt.Printf("Build quads %d\n", result)
+			chRNDQuad <- result
 		}(d)
 	}
 
