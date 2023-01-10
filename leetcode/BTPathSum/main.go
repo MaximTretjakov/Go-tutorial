@@ -23,9 +23,9 @@ func main() {
 	root := TreeNode{Val: 1}
 	root.Left = &TreeNode{Val: 2}
 	root.Left.Left = &TreeNode{Val: 7}
-	// root.Right = &TreeNode{Val: 3}
-	// root.Right.Left = &TreeNode{Val: 5}
-	// root.Right.Right = &TreeNode{Val: 6}
+	root.Right = &TreeNode{Val: 3}
+	root.Right.Left = &TreeNode{Val: 5}
+	root.Right.Right = &TreeNode{Val: 6}
 
-	fmt.Println(hasPathSum(&root, 100))
+	fmt.Println(hasPathSum(&root, 10))
 }
