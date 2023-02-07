@@ -1,3 +1,6 @@
+/*
+3. Fast and Slow Pointers 
+*/
 package main
 
 import "fmt"
