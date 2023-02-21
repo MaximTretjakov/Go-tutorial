@@ -1,23 +1,19 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 
-	"github.com/MaximTretjakov/Go-tutorial/test-services/downloader/scraping"
-	"github.com/MaximTretjakov/Go-tutorial/test-services/downloader/transformation"
+	"github.com/MaximTretjakov/Go-tutorial/test-services/downloader/entry"
 )
 
 func main() {
-	rawData, err := scraping.Scraping("https://calorizator.ru/product/mushroom")
+	url := flag.String("url", "", "Pass target url")
+	flag.Parse()
+	data, err := entry.Run(*url)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	data, err := transformation.Transformation(rawData)
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	fmt.Println(data)
 }
