@@ -1,3 +1,4 @@
 go 1.18
 
 use /home/maxim/Projects/Go-tutorial/test-services/downloader
+use /home/maxim/Projects/Go-tutorial/leetcode/AlgoPattherns/TwoPointers/validPalindroneII

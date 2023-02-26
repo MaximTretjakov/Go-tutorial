@@ -1,3 +1,7 @@
+/*
+Two Pointers approach
+*/
+
 package main
 
 import (
