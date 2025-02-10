@@ -1,7 +1,3 @@
-go 1.18
+go 1.21.6
 
-use /home/maxim/Projects/Go-tutorial/test-services/downloader
-use /home/maxim/Projects/Go-tutorial/leetcode/AlgoPattherns/TwoPointers/validPalindroneII
-use /home/maxim/Projects/Go-tutorial/leetcode/AlgoPattherns/FastAndSlowPointers/LinkedListCycle
-use /home/maxim/Projects/Go-tutorial/leetcode/AlgoPattherns/FastAndSlowPointers/MiddleLinkedList
-use /home/maxim/Projects/Go-tutorial/leetcode/AlgoPattherns/FastAndSlowPointers/PalindromeLinkedList
+use ./test
